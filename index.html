@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Alchemy — Data Analytics, New Mexico</title>
+<meta name="description" content="Data Alchemy turns raw business data into clear, usable insight. Analytics consulting based in New Mexico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #14192b;
+    --night-deep: #0d1120;
+    --sand: #e7ddc9;
+    --sand-dim: #b9ae98;
+    --turquoise: #3aa8a0;
+    --turquoise-bright: #56c7bd;
+    --gold: #c9a227;
+    --gold-bright: #e0bd4a;
+    --line: rgba(231, 221, 201, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--night);
+    color: var(--sand);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--turquoise-bright);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Header ---------- */
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(20, 25, 43, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+
+  .brand-mark {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: var(--sand-dim);
+    transition: color 0.2s ease;
+  }
+
+  nav ul a:hover { color: var(--turquoise-bright); }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 96px 0 88px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--turquoise-bright);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--turquoise-bright);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.04;
+    max-width: 12ch;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(100deg, var(--gold-bright), var(--gold) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero p.lede {
+    margin-top: 26px;
+    max-width: 46ch;
+    font-size: 1.12rem;
+    color: var(--sand-dim);
+  }
+
+  .hero-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 3px;
+    font-size: 0.92rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--turquoise);
+    color: var(--night-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--turquoise-bright);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--sand);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--turquoise-bright);
+    color: var(--turquoise-bright);
+  }
+
+  /* Signature transmutation diagram */
+  .transmute {
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 560px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--sand-dim);
+  }
+
+  .t-block {
+    flex: 1;
+    height: 34px;
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.06em;
+  }
+
+  .t-raw {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(231,221,201,0.09),
+      rgba(231,221,201,0.09) 4px,
+      transparent 4px,
+      transparent 9px
+    );
+    border: 1px dashed var(--line);
+    color: var(--sand-dim);
+  }
+
+  .t-arrow {
+    color: var(--turquoise-bright);
+    flex: 0 0 auto;
+    font-size: 1rem;
+  }
+
+  .t-gold {
+    background: linear-gradient(120deg, var(--gold), var(--gold-bright));
+    color: var(--night-deep);
+    font-weight: 600;
+  }
+
+  /* ---------- Sections ---------- */
+
+  section {
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--turquoise-bright);
+    letter-spacing: 0.1em;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin-top: 8px;
+  }
+
+  .section-head p {
+    max-width: 32ch;
+    color: var(--sand-dim);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  @media (max-width: 800px) {
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--night);
+    padding: 32px 28px;
+  }
+
+  .card .mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold-bright);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    color: var(--sand-dim);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  /* Approach / stacked rows */
+  .rows {
+    border-top: 1px solid var(--line);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  @media (max-width: 600px) {
+    .row { grid-template-columns: 60px 1fr; }
+  }
+
+  .row .step {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--turquoise-bright);
+    font-size: 0.85rem;
+  }
+
+  .row h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .row p {
+    color: var(--sand-dim);
+    font-size: 0.92rem;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* ---------- CTA ---------- */
+
+  .cta {
+    text-align: left;
+    background: var(--night-deep);
+  }
+
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  .cta h2 {
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    max-width: 14ch;
+  }
+
+  .cta p {
+    color: var(--sand-dim);
+    margin-top: 10px;
+    max-width: 40ch;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+  }
+
+  .foot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.82rem;
+    color: var(--sand-dim);
+  }
+
+  .foot-row a {
+    text-decoration: none;
+    color: var(--sand-dim);
+  }
+
+  .foot-row a:hover { color: var(--turquoise-bright); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L4 9V22H20V9L12 2Z" stroke="#e0bd4a" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M9 22V14H15V22" stroke="#3aa8a0" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      Data Alchemy
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <div class="hero-eyebrow">Data analytics · New Mexico</div>
+      <h1>Raw data,<br><em>refined</em> into decisions.</h1>
+      <p class="lede">Data Alchemy helps businesses turn scattered numbers into clear, usable insight — the reporting, models, and dashboards that let you make decisions with confidence instead of guesswork.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-ghost" href="#services">See what we do</a>
+      </div>
+      <div class="transmute" aria-hidden="true">
+        <div class="t-block t-raw">raw data</div>
+        <span class="t-arrow">→</span>
+        <div class="t-block t-gold">insight</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">01 — Services</div>
+          <h2>Where we help</h2>
+        </div>
+        <p>Practical analytics work, scoped to what actually moves your business.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="mark">01</span>
+          <h3>Reporting &amp; dashboards</h3>
+          <p>Clean, reliable dashboards that answer the questions your team actually asks — no more digging through spreadsheets.</p>
+        </div>
+        <div class="card">
+          <span class="mark">02</span>
+          <h3>Data pipeline setup</h3>
+          <p>Getting your data out of scattered tools and into one place you can trust, updated on a schedule you can count on.</p>
+        </div>
+        <div class="card">
+          <span class="mark">03</span>
+          <h3>Analysis &amp; forecasting</h3>
+          <p>Digging into what's driving your numbers, and building forward-looking models you can plan around.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">02 — Approach</div>
+          <h2>How a project runs</h2>
+        </div>
+        <p>Four steps, start to finish.</p>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="step">01</div>
+          <div>
+            <h3>Understand the business</h3>
+            <p>Before touching any data, we learn what decisions you're actually trying to make and what's currently getting in the way.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="step">02</div>
+          <div>
+            <h3>Audit the data</h3>
+            <p>We map what you have, where it lives, and how reliable it is — so the work that follows is built on solid ground.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="step">03</div>
+          <div>
+            <h3>Build</h3>
+            <p>Pipelines, dashboards, or models — built to fit the tools you already use, not to force a new system on your team.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="step">04</div>
+          <div>
+            <h3>Hand off</h3>
+            <p>You get something your team can run without us — plus documentation and a walkthrough, not a black box.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Have a project in mind?</h2>
+        <p>Tell me a bit about what you're working with, and I'll follow up to see if it's a fit.</p>
+      </div>
+      <a class="btn btn-primary" href="mailto:hello@thedataalchemy.com">hello@thedataalchemy.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="mono">Data Alchemy · New Mexico</span>
+    <span>&copy; <span id="year"></span> Data Alchemy. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
